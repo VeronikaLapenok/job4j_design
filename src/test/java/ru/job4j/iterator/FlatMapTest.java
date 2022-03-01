@@ -11,7 +11,6 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.hamcrest.Matchers.is;
 
-
 public class FlatMapTest {
     @Test
     public void whenDiffNext() {
