@@ -1,6 +1,8 @@
 package generics.store;
 
 import org.junit.Test;
+import ru.job4j.generics.store.User;
+import ru.job4j.generics.store.UserStore;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;

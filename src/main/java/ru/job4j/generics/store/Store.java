@@ -1,4 +1,4 @@
-package generics.store;
+package ru.job4j.generics.store;
 
 public interface Store<T extends Base> {
 

@@ -1,17 +1,17 @@
-package generics.store;
+package ru.job4j.generics.store;
 
 import java.util.Objects;
 
-public class User extends Base {
-    private final String username;
+public class Role extends Base {
+    private final String roleName;
 
-    public User(String id, String username) {
+    public Role(String id, String roleName) {
         super(id);
-        this.username = username;
+        this.roleName = roleName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getRoleName() {
+        return roleName;
     }
 
     @Override
@@ -25,12 +25,12 @@ public class User extends Base {
         if (!super.equals(o)) {
             return false;
         }
-        User user = (User) o;
-        return Objects.equals(username, user.username);
+        Role role = (Role) o;
+        return Objects.equals(roleName, role.roleName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), username);
+        return Objects.hash(super.hashCode(), roleName);
     }
 }

@@ -1,4 +1,4 @@
-package generics.store;
+package ru.job4j.generics.store;
 
 import java.util.HashMap;
 import java.util.Map;

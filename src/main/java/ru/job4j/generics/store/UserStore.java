@@ -1,4 +1,4 @@
-package generics.store;
+package ru.job4j.generics.store;
 
 public class UserStore implements Store<User> {
     private final Store<User> userStore = new MemStore<>();
