@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
+/**
+ * Creates a container based on a linked list
+ *
+ * @author Veronika Lapenok
+ */
 public class SimpleLinkedList<E> implements LinkedList<E> {
     private Node<E> firstNode;
     private Node<E> lastNode;
@@ -57,16 +62,15 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            private int index = 0;
             private final int expectedModCount = modCount;
-            private Node<E> currentNode = firstNode;
+            private Node<E> currentNode = null;
 
             @Override
             public boolean hasNext() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return index < size;
+                return currentNode == null ? modCount > 0 : currentNode.next != null;
             }
 
             @Override
@@ -74,10 +78,12 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                E next = currentNode.currentElement;
-                currentNode = currentNode.next;
-                index++;
-                return next;
+                if (currentNode == null) {
+                    currentNode = firstNode;
+                } else {
+                    currentNode = currentNode.next;
+                }
+                return currentNode.currentElement;
             }
         };
     }
