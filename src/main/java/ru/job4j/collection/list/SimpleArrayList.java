@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.NoSuchElementException;
 
 /**
- * Create a list implementation based on a dynamic
+ * Creates a list implementation based on a dynamic
  * array, analogous to ArrayList
  *
  * @author Veranika Lapianok
@@ -22,7 +22,17 @@ public class SimpleArrayList<T> implements List<T> {
     }
 
     /**
-     * Add a new element. Container must be dynamic
+     * Increased container's size
+     */
+    private void increaseSize() {
+        if (container.length == 0) {
+            container = Arrays.copyOf(container, 2);
+        }
+        container = Arrays.copyOf(container, container.length * 2 + 1);
+    }
+
+    /**
+     * Adds a new element. Container must be dynamic
      * If the array is full, double its size.
      *
      * @param value - value of a new element
@@ -30,7 +40,7 @@ public class SimpleArrayList<T> implements List<T> {
     @Override
     public void add(T value) {
         if (container.length == size) {
-            container = Arrays.copyOf(container, container.length * 2 + 1);
+            increaseSize();
         }
         container[size] = value;
         size++;
@@ -38,7 +48,7 @@ public class SimpleArrayList<T> implements List<T> {
     }
 
     /**
-     * Set a new value at given index
+     * Sets a new value at given index
      *
      * @param index - given index
      * @param newValue - new value
@@ -52,7 +62,7 @@ public class SimpleArrayList<T> implements List<T> {
     }
 
     /**
-     * Remove value at given index
+     * Removes value at given index
      *
      * @param index - given index
      * @return removed value
@@ -69,18 +79,18 @@ public class SimpleArrayList<T> implements List<T> {
     }
 
     /**
-     * Get value at given index
+     * Gets value at given index
      * @param index - given index
      * @return value
      */
     @Override
     public T get(int index) {
-        Objects.checkIndex(index, container.length);
+        Objects.checkIndex(index, size);
         return container[index];
     }
 
     /**
-     * Get size of array
+     * Gets size of array
      *
      * @return size of array
      */
