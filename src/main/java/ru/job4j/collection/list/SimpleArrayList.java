@@ -17,6 +17,10 @@ public class SimpleArrayList<T> implements List<T> {
     private int size;
     private int modCount;
 
+    public SimpleArrayList() {
+        this.container = (T[]) new Object[2];
+    }
+
     public SimpleArrayList(int capacity) {
         this.container = (T[]) new Object[capacity];
     }
