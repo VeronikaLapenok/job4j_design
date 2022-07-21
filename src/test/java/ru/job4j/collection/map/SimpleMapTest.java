@@ -16,13 +16,14 @@ public class SimpleMapTest {
     public void whenPutTwoNullThanFalse() {
         Map<Integer, String> testMap = new SimpleMap<>();
         testMap.put(null, "val1");
+        assertThat(testMap.get(null), is("val1"));
         assertFalse(testMap.put(null, "val2"));
     }
 
     @Test
     public void whenPutMoreThanExpand() {
         Map<Integer, String> testMap = new SimpleMap<>();
-        assertTrue(testMap.put(1, "val1"));
+        assertTrue(testMap.put(null, "val1"));
         assertTrue(testMap.put(2, "val2"));
         assertTrue(testMap.put(3, "val3"));
         assertTrue(testMap.put(4, "val4"));
@@ -49,6 +50,14 @@ public class SimpleMapTest {
         Map<Integer, String> testMap = new SimpleMap<>();
         testMap.put(1, "val1");
         assertTrue(testMap.remove(1));
+    }
+
+    @Test
+    public void whenRemoveNullThanTrue() {
+        Map<Integer, String> testMap = new SimpleMap<>();
+        testMap.put(null, "val1");
+        testMap.put(1, "val1");
+        assertTrue(testMap.remove(null));
     }
 
     @Test
