@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
+/**
+ * Creates a container based on a HashMap
+ *
+ * @author Veronika Lapenok
+ */
 public class SimpleMap<K, V> implements Map<K, V> {
     private static final float LOAD_FACTOR = 0.75f;
     private int capacity = 8;
@@ -12,6 +17,12 @@ public class SimpleMap<K, V> implements Map<K, V> {
     private int modCount = 0;
     private MapEntry<K, V>[] table = new MapEntry[capacity];
 
+    /**
+     * Adds a key-value pair to a map container
+     * @param key - added unique key
+     * @param value - added value
+     * @return result of the operation (true/false)
+     */
     @Override
     public boolean put(K key, V value) {
         boolean result = false;
@@ -55,6 +66,11 @@ public class SimpleMap<K, V> implements Map<K, V> {
         table = expandedTable;
     }
 
+    /**
+     * Gets value using key
+     * @param key
+     * @return value
+     */
     @Override
     public V get(K key) {
         V result = null;
@@ -65,6 +81,11 @@ public class SimpleMap<K, V> implements Map<K, V> {
         return result;
     }
 
+    /**
+     * Removes a key-value pair using key
+     * @param key
+     * @return result of the operation (true/false)
+     */
     @Override
     public boolean remove(K key) {
         boolean result = false;
