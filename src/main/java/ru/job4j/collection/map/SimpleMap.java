@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
- * Creates a container based on a HashMap
+ * HashMap data structure implementation
  *
  * @author Veronika Lapenok
  */
@@ -21,7 +21,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
      * Adds a key-value pair to a map container
      * @param key - added unique key
      * @param value - added value
-     * @return result of the operation (true/false)
+     * @return result of the operation (boolean)
      */
     @Override
     public boolean put(K key, V value) {
@@ -65,8 +65,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * Gets value using key
-     * @param key
+     * Gets value by key
+     * @param key - value of key
      * @return value
      */
     @Override
@@ -80,9 +80,9 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * Removes a key-value pair using key
-     * @param key
-     * @return result of the operation (true/false)
+     * Removes a key-value pair by key
+     * @param key - value of key
+     * @return result of the operation (boolean)
      */
     @Override
     public boolean remove(K key) {

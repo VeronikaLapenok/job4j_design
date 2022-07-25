@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Objects;
 
 /**
- * Creates a set implementation based on ArrayList
+ * Set data structure implementation based on ArrayList
  *
  * @author Veranika Lapianok
  */
@@ -16,7 +16,7 @@ public class SimpleSet<T> implements Set<T> {
     /**
      * Adds element to the set
      * @param value of the added element
-     * @return if element is added - true, else - false
+     * @return result of the operation (boolean)
      */
     @Override
     public boolean add(T value) {
@@ -31,7 +31,7 @@ public class SimpleSet<T> implements Set<T> {
     /**
      * Checks if set already contains such an element
      * @param value of checked element
-     * @return if element is contained - true, else - false
+     * @return result of the operation (boolean)
      */
     @Override
     public boolean contains(T value) {

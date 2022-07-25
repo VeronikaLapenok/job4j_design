@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Creates container based on LinkedList
+ * LinkedList data structure implementation
  *
  * @author Veranika Lapianok
  */
@@ -14,7 +14,7 @@ public class ForwardLinked<T> implements Iterable<T> {
 
     /**
      * Checks if a linkedList is empty
-     * @return true/false
+     * @return result of the operation (boolean)
      */
     public boolean isEmpty() {
         return head == null;

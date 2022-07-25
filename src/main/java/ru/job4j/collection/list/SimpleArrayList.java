@@ -7,8 +7,7 @@ import java.util.Objects;
 import java.util.NoSuchElementException;
 
 /**
- * Creates a list implementation based on a dynamic
- * array, analogous to ArrayList
+ * ArrayList data structure implementation based on a dynamic array
  *
  * @author Veranika Lapianok
  */
@@ -26,7 +25,7 @@ public class SimpleArrayList<T> implements List<T> {
     }
 
     /**
-     * Increased container's size
+     * Increases container's size
      */
     private void increaseSize() {
         if (container.length == 0) {

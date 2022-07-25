@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
- * Creates a container based on a linked list
+ * LinkedList data structure implementation
  *
  * @author Veronika Lapenok
  */
