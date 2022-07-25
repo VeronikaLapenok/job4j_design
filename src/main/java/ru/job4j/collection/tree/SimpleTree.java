@@ -30,6 +30,7 @@ public class SimpleTree<E> implements Tree<E> {
         Optional<Node<E>> parentOpt = findBy(parent);
         if (parentOpt.isPresent() && !findBy(child).isPresent()) {
             parentOpt.get().getChildren().add(new Node<>(child));
+            result = true;
         }
         return result;
     }
