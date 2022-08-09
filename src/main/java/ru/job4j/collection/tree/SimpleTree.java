@@ -3,6 +3,7 @@ package ru.job4j.collection.tree;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.Queue;
+import java.util.function.Predicate;
 
 /**
  * Tree data structure implementation
@@ -35,6 +36,21 @@ public class SimpleTree<E> implements Tree<E> {
         return result;
     }
 
+    private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
+        Optional<Node<E>> result = Optional.empty();
+        Queue<Node<E>> data = new LinkedList<>();
+        data.offer(this.root);
+        while (!data.isEmpty()) {
+            Node<E> el = data.poll();
+            if (condition.test(el)) {
+                result = Optional.of(el);
+                break;
+            }
+            data.addAll(el.getChildren());
+        }
+        return result;
+    }
+
     /**
      * Finds node by value
      * @param value - value for searching
@@ -42,17 +58,16 @@ public class SimpleTree<E> implements Tree<E> {
      */
     @Override
     public Optional<Node<E>> findBy(E value) {
-        Optional<Node<E>> result = Optional.empty();
-        Queue<Node<E>> data = new LinkedList<>();
-        data.offer(this.root);
-        while (!data.isEmpty()) {
-            Node<E> el = data.poll();
-            if (el.getValue().equals(value)) {
-                result = Optional.of(el);
-                break;
-            }
-            data.addAll(el.getChildren());
-        }
-        return result;
+        Predicate<Node<E>> condition = el -> el.getValue().equals(value);
+        return findByPredicate(condition);
+    }
+
+    /**
+     * Checks if tree is binary
+     * @return result (boolean)
+     */
+    public boolean isBinary() {
+        Predicate<Node<E>> condition = el -> el.getChildren().size() > 2;
+        return findByPredicate(condition).isEmpty();
     }
 }
