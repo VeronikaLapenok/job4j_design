@@ -2,7 +2,6 @@ package ru.job4j.io;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class ResultFile {
     public static int[][] multiple(int size) {
