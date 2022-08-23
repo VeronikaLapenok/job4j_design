@@ -4,14 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Config {
     private final String path;
-    private final HashMap<String, String> values = new HashMap<String, String>();
+    private final HashMap<String, String> values = new HashMap<>();
 
     public Config(final String path) {
         this.path = path;
@@ -20,17 +18,17 @@ public class Config {
     public void load() {
         StringJoiner out = new StringJoiner(System.lineSeparator());
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
-            List<String> lines = read.lines().filter(line -> !line.contains("#") && !line.isEmpty())
-                    .map(str -> str.trim())
-                    .collect(Collectors.toList());
-            for (String str : lines) {
-                if (!Pattern.matches(".+=.+", str)) {
-                    throw new IllegalArgumentException("Illegal pattern key-value");
-                } else {
-                    int splitIndex = str.indexOf('=');
-                    values.put(str.substring(0, splitIndex), str.substring(splitIndex + 1));
-                }
-            }
+            read.lines().filter(str -> !str.contains("#") && !str.isEmpty())
+                    .map(String::trim).forEach(str -> {
+                        if (!Pattern.matches(".+=.+", str)) {
+                            throw new IllegalArgumentException(
+                                    "Illegal pattern key-value: \"" + str + "\"");
+                        } else {
+                            int splitIndex = str.indexOf("=");
+                            values.put(str.substring(0, splitIndex),
+                                    str.substring(splitIndex + 1));
+                        }
+                    });
         } catch (IOException e) {
             e.printStackTrace();
         }
