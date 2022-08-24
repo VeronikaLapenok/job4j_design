@@ -22,12 +22,10 @@ public class Config {
                     .map(String::trim).forEach(str -> {
                         if (!Pattern.matches(".+=.+", str)) {
                             throw new IllegalArgumentException(
-                                    "Illegal pattern key-value: \"" + str + "\"");
-                        } else {
-                            int splitIndex = str.indexOf("=");
-                            values.put(str.substring(0, splitIndex),
-                                    str.substring(splitIndex + 1));
+                                    String.format("Illegal pattern key-value: \"%s\"", str));
                         }
+                        int splitIndex = str.indexOf("=");
+                        values.put(str.substring(0, splitIndex), str.substring(splitIndex + 1));
                     });
         } catch (IOException e) {
             e.printStackTrace();
