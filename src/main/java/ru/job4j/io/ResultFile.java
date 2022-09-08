@@ -15,7 +15,7 @@ public class ResultFile {
     }
 
     public static void main(String[] args) {
-        try (FileOutputStream out = new FileOutputStream("result.txt")) {
+        try (FileOutputStream out = new FileOutputStream("./data/result.txt")) {
             int size = 5;
             int[][] array = multiple(size);
             for (int i = 0; i < size; i++) {
