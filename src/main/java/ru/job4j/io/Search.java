@@ -14,10 +14,11 @@ public class Search {
     }
 
     public static void validate(String[] args) throws IOException {
-        Path path = Paths.get(args[0]);
         if (args.length != 2) {
             throw new IllegalArgumentException("Two arguments are expected");
         }
+
+        Path path = Paths.get(args[0]);
 
         if (!Files.exists(path)) {
             throw new IllegalArgumentException(String.format(
