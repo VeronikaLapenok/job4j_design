@@ -23,9 +23,9 @@ class ArgsNameTest {
     }
 
     @Test
-    void whenValueNotExist() {
-        ArgsName jvm = ArgsName.of(new String[] {"-Xmx=", "-encoding=UTF-8"});
-        assertThat(jvm.get("Xmx")).isEqualTo("");
+    void whenValueMissing() {
+        assertThatThrownBy(() -> ArgsName.of(new String[]{"-Xmx=", "-encoding=UTF-8"}))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

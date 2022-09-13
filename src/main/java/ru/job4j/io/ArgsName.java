@@ -22,7 +22,7 @@ public class ArgsName {
         Arrays.stream(args)
                 .forEach(arg -> {
                     arg.trim();
-                    if (!Pattern.matches("-.+=.*", arg)) {
+                    if (!Pattern.matches("-.+=.+", arg)) {
                         throw new IllegalArgumentException(
                                 String.format("Illegal pattern key-value: \"%s\"", arg));
                     }
