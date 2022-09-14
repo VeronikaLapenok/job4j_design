@@ -25,14 +25,9 @@ public class Zip {
         }
     }
 
-    public static void validate(String[] args) {
-        if (args.length != 3) {
-            throw new IllegalArgumentException("Three arguments are expected");
-        }
-
-        ArgsName zipCommandArgs = ArgsName.of(args);
-        Path path = Paths.get(zipCommandArgs.get("d"));
-        String zip = zipCommandArgs.get("o");
+    public static void validate(ArgsName zipArgs) {
+        Path path = Paths.get(zipArgs.get("d"));
+        String zip = zipArgs.get("o");
         String zipExtension = zip.substring(zip.indexOf("."));
 
         if (!Files.exists(path)) {
@@ -42,14 +37,17 @@ public class Zip {
 
         if (!zipExtension.equals(".zip")) {
             throw new IllegalArgumentException(String.format(
-                    "Is not a zip extension - %s", args[2]));
+                    "Is not a zip extension - %s", zip));
         }
     }
 
     public static void main(String[] args) throws IOException {
-        validate(args);
+        if (args.length != 3) {
+            throw new IllegalArgumentException("Three arguments are expected");
+        }
         Zip zip = new Zip();
         ArgsName zipArgs = ArgsName.of(args);
+        validate(zipArgs);
         List<Path> source = Search.search(Paths.get(zipArgs.get("d")),
                 f -> !f.toFile().getName().endsWith(zipArgs.get("e")));
         zip.packFiles(source, Path.of(zipArgs.get("o")));
