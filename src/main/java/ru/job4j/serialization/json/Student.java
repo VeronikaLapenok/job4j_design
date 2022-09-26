@@ -9,6 +9,14 @@ public class Student {
         this.surname = surname;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
     @Override
     public String toString() {
         return "Student{"
