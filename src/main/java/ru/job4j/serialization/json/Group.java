@@ -18,6 +18,26 @@ public class Group {
         this.subjects = subjects;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getNumOfStudents() {
+        return numOfStudents;
+    }
+
+    public boolean isStudy() {
+        return isStudy;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public String[] getSubjects() {
+        return subjects;
+    }
+
     @Override
     public String toString() {
         return "Group{"
