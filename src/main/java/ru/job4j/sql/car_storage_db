@@ -39,17 +39,17 @@ insert into car_engines (name) values ('type1'),
 insert into car_transmissions (name) values ('automatic'), ('mechanical'), ('half automatic');
 
 insert into cars (name, body_id, engine_id, transmission_id) values
-('audi', 3, 2, 5),
-('BMW', 1, 1, 6),
-('Mercedes-Benz', 3, 5, 5),
-('Porsche', 7, 2, 6),
+('audi', 3, 2, 1),
+('BMW', 1, 1, 2),
+('Mercedes-Benz', 3, 5, 1),
+('Porsche', 7, 2, 2),
 ('Volkswagen', 5, 3, null),
-('Opel', 2, 1, 5),
-('Peugeot', 2, 3, 6),
-('Land Rover', 7, 2, 5),
-('Toyota', 8, 5, 5),
-('Honda', 2, 3, 6),
-('Mazda', 4, 1, 5);
+('Opel', 2, 1, 1),
+('Peugeot', 2, 3, 2),
+('Land Rover', 7, 2, 1),
+('Toyota', 8, 5, 1),
+('Honda', 2, 3, 2),
+('Mazda', 4, 1, 1);
 
 select c.id, c.name as car_name, b.name as body_name, e.name as engine_name, t.name as transmission_name
 from cars c
