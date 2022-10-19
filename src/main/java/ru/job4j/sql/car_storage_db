@@ -1,0 +1,73 @@
+create table car_bodies (
+	id serial primary key,
+	name varchar(50)
+);
+
+create table car_engines (
+	id serial primary key,
+	name varchar(50)
+);
+
+create table car_transmissions (
+	id serial primary key,
+	name varchar(50)
+);
+
+create table cars (
+	id serial primary key,
+	name varchar(50),
+	body_id int references car_bodies(id),
+	engine_id int references car_engines(id),
+	transmission_id int references car_transmissions(id)
+);
+
+insert into car_bodies (name) values ('hatchback'),
+				     ('station wagon'),
+			       	     ('minivan'),
+				     ('sedan'),
+			             ('cabriolet'),
+				     ('coupe'),
+				     ('pickup'),
+				     ('crossover');
+				     
+insert into car_engines (name) values ('type1'),
+				      ('type2'),
+				      ('type3'),
+				      ('type4'),
+				      ('type5');
+				      
+insert into car_transmissions (name) values ('automatic'), ('mechanical'), ('half automatic');
+
+insert into cars (name, body_id, engine_id, transmission_id) values
+('audi', 3, 2, 1),
+('BMW', 1, 1, 2),
+('Mercedes-Benz', 3, 5, 1),
+('Porsche', 7, 2, 2),
+('Volkswagen', 5, 3, null),
+('Opel', 2, 1, 1),
+('Peugeot', 2, 3, 2),
+('Land Rover', 7, 2, 1),
+('Toyota', 8, 5, 1),
+('Honda', 2, 3, 2),
+('Mazda', 4, 1, 1);
+
+select c.id, c.name as car_name, b.name as body_name, e.name as engine_name, t.name as transmission_name
+from cars c
+left outer join car_bodies b on c.body_id = b.id
+left outer join car_engines e on c.engine_id = e.id
+left outer join car_transmissions t on c.transmission_id = t.id;
+
+select b.name as body_name
+from car_bodies b
+left outer join cars c on c.body_id = b.id
+where c.body_id is null;
+
+select e.name as engine_name
+from car_engines e
+left outer join cars c on c.engine_id = e.id
+where c.engine_id is null;
+
+select t.name as transmission_name
+from car_transmissions t
+left outer join cars c on c.transmission_id = t.id
+where c.transmission_id is null;
