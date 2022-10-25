@@ -1,8 +1,8 @@
-create table books()
+create table books (
 id serial primary key,
 title varchar(100),
 author varchar(50),
-pages int;
+pages int);
 
 insert into books (title, author, pages) values ('Идиот', 'Достоевский Ф.М.', 434);
 insert into books (title, author, pages) values ('Мастер и Маргарита', 'Булгаков М.А.', 278);
