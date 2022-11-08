@@ -24,14 +24,14 @@ public class ImportDB {
     public List<User> load() throws IOException {
         List<User> users = new ArrayList<>();
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
-            rd.lines().filter(line -> line.contains("@") && line.length() == 2 && line != null)
-                    .forEach(line -> {
-                        String[] strings = line.split(";");
-                        if (!strings[1].contains("@")) {
-                            throw new IllegalArgumentException("Incorrect email");
-                        }
-                        users.add(new User(strings[0], strings[1]));
-                    });
+            rd.lines().forEach(line -> {
+                String[] strings = line.split(";");
+                if (strings.length != 2 || !strings[1].contains("@")
+                        || strings[0].isBlank() || strings[1].isBlank()) {
+                    throw new IllegalArgumentException("Incorrect data");
+                }
+                users.add(new User(strings[0], strings[1]));
+            });
         }
         return users;
     }
