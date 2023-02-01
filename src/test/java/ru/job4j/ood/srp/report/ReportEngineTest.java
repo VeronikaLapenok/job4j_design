@@ -43,7 +43,8 @@ public class ReportEngineTest {
         Currency sourceCurrency = Currency.RUB;
         Currency targetCurrency = Currency.EUR;
         store.add(worker);
-        Report account = new ReportAccounting(store, parser, sourceCurrency, targetCurrency);
+        Report account = new ReportAccounting(store, parser, sourceCurrency,
+                targetCurrency, currencyConverter);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
                 .append(System.lineSeparator())
@@ -66,7 +67,6 @@ public class ReportEngineTest {
         Report developers = new ReportDevelopers(store, parser);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
-                .append(System.lineSeparator())
                 .append(worker.getName()).append(";")
                 .append(parser.parse(worker.getHired())).append(";")
                 .append(parser.parse(worker.getFired())).append(";")

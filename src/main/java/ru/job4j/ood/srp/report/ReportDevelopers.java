@@ -19,8 +19,7 @@ public class ReportDevelopers implements Report {
     @Override
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
-        text.append("Name; Hired; Fired; Salary;")
-                .append(System.lineSeparator());
+        text.append("Name; Hired; Fired; Salary;");
         for (Employee employee : store.findBy(filter)) {
             text.append(employee.getName()).append(";")
                     .append(dateTimeParser.parse(employee.getHired())).append(";")
